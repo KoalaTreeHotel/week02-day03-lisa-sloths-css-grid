@@ -1,0 +1,202 @@
+/* CSS Variables */
+:root {
+  --palette-dark: #03045E;
+  --palette-meddark: #0077B6;
+  --palette-med: #00B4D8;
+  --palette-medlight: #90E0EF;
+  --palette-light: #CAF0F8;
+  --palette-hover: #f6ae2d;
+  --white: #ffffff;
+  --black: #000000;
+  --graylight: #e6d6d6;
+  --graydark: #6e6e69;
+
+  --color-header: var(--palette-light);
+  --color-leftcolumn: var(--palette-med);
+  --color-rightcolumn: var(--palette-medlight);
+  --color-footer: var(--palette-light);
+  --color-nav: var(--palette-dark);
+  --color-nav-hover: var(--palette-hover);
+  --color-non-gallery-image-border: rgb(78, 78, 194);
+}
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--color-rightcolumn);
+}
+
+p {
+  font-family: "Merriweather", 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+}
+
+header {
+  padding: 20px 20px;
+  background-color: var(--color-header);
+  color: var(--black)
+}
+
+nav {
+  display: flex;
+  background-color: var(--color-nav);
+}
+
+nav a {
+  color: var(--white);
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav a:hover {
+  background-color: var(--color-nav-hover);
+  color: var(--black)
+}
+
+/* Grid Column Container */
+.index-grid-row {
+  display: grid;
+  /* Split Into 2 Columns, Split 50/50% */
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+/* Grid Left Column */
+.index-grid-left-column {
+  background-color: var(--color-leftcolumn);
+  padding: 20px;
+}
+
+/* Grid Right Column */
+.index-grid-right-column {
+  background-color: var(--color-rightcolumn);
+  padding: 20px;
+}
+
+/* Non-Gallery Images */
+.img-lisa-flag,
+.img-lisa-book,
+.img-lisa-sax,
+.img-sloth,
+.img-red-button,
+.img-moe-phone {
+  width: 50%;
+  height: auto;
+  border: 5px solid var(--color-non-gallery-image-border);
+}
+
+/* Footer */
+footer {
+  padding: 30px;
+  text-align: center;
+  background: var(--color-footer)
+}
+
+footer a {
+  text-decoration: none;
+}
+
+.footer-img-social-media {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+/********** Gallery Sloths **********/
+/* Based on: https://code-boxx.com/responsive-image-gallery-html-css/  */
+.gallery-sloths-grid-container {
+  /* Grid Layout - 3 Images Per Row */
+  display: grid;
+  /* 3 Equal (Fr)actions Auto Calculating For Grid Gap */
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: 3fr 3fr 3fr;
+  grid-gap: 20px;
+}
+
+/* Gallery Images */
+.gallery-sloths-grid-container img {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+
+  /* Colors */
+  background: var(--palette-med);
+
+  /* Image Resize */
+  /* cover | contain | fill | scale-down */
+  object-fit: contain;
+}
+
+/* Optional Zoom On Hover */
+.gallery-sloths-grid-container img:hover {
+  z-index: 9;
+  transform: scale(1.3);
+  /* linear | ease | ease-in | ease-out | ease-in-out */
+  transition: transform ease 0.5s;
+  background-color: var(--color-nav-hover);
+}
+
+/* Fullscreen Mode */
+.gallery-sloths-grid-container img.full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery-sloths-grid-container img.full:hover {
+  z-index: 999;
+  transform: none;
+}
+
+/********** Responsive Layout **********/
+/* Viewports More Than 768px */
+@media screen and (min-width: 769px) {
+
+  /* Grid: On Big Screens - 4 Images Per Row */
+  .gallery-sloths-grid-container {
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Viewports Less Than 768px */
+@media screen and (max-width: 768px) {
+
+  /* Grid: Stack The 2 Columns */
+  .index-grid-row {
+    /* grid-template-columns: 100%; */
+    grid-template-columns: 1fr;
+  }
+
+  /* Grid: On Medium Screens - 2 Image Per Row */
+  .gallery-sloths-grid-container {
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Viewports Less Than 600px */
+@media screen and (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+
+  /* Grid Sloth Gallery 1 Per Row */
+  .gallery-sloths-grid-container {
+    /* grid-template-columns: repeat(1, 1fr); */
+    grid-template-columns: 1fr;
+  }
+}
