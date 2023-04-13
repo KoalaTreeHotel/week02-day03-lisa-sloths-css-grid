@@ -82,12 +82,7 @@ nav a:hover {
 }
 
 /* Non-Gallery Images */
-.img-lisa-flag,
-.img-lisa-book,
-.img-lisa-sax,
-.img-sloth,
-.img-red-button,
-.img-moe-phone {
+.img-non-gallery {
   width: 50%;
   height: auto;
   border: 5px solid var(--color-non-gallery-image-border);
